@@ -58,100 +58,84 @@ func searchAll(coords []int, board [][]string) []string {
     "north": indexAndBoundary{
       direction: "north",
       indexFn: func(coords []int, index int) []int {
-        fmt.Println(coords, coords[1] - index)
         coords[1] = coords[1] - index
         return coords
       },
       boundaryFn: func(coords []int) bool {
-        fmt.Println(coords, coords[1] - 3)
         return coords[1] - 3 >= 0
       },
     },
     "south": indexAndBoundary{
       direction: "south",
       indexFn: func(coords []int, index int) []int {
-        fmt.Println(coords, coords[1] + index)
         coords[1] = coords[1] + index
         return coords
       },
       boundaryFn: func(coords []int) bool {
-        fmt.Println(coords, coords[1] + 3)
         return coords[1] + 3 <=yMax
       },
     },
     "east": indexAndBoundary{
       direction: "east",
       indexFn: func(coords []int, index int) []int {
-        fmt.Println(coords, coords[0] + index)
         coords[0] = coords[0] + index
         return coords
       },
       boundaryFn: func(coords []int) bool {
-        fmt.Println(coords, coords[0] + 3, xMax)
         return coords[0] + 3 <= xMax
       },
     },
     "west": indexAndBoundary{
       direction: "west",
       indexFn: func(coords []int, index int) []int {
-        fmt.Println(coords, coords[0] - index)
         coords[0] = coords[0] - index
         return coords
       },
       boundaryFn: func(coords []int) bool {
-        fmt.Println(coords, coords[0] - 3)
         return coords[0] - 3 >= 0
       },
     },
     "northeast": indexAndBoundary{
       direction: "northeast",
       indexFn: func(coords []int, index int) []int {
-        fmt.Println(coords, coords[0] - index)
         coords[1] = coords[1] - index
         coords[0] = coords[0] + index
         return coords
       },
       boundaryFn: func(coords []int) bool {
-        fmt.Println(coords, coords[0] - 3)
         return coords[1] - 3 >= 0 && coords[0] + 3 <= xMax
       },
     },
     "northwest": indexAndBoundary{
       direction: "northwest",
       indexFn: func(coords []int, index int) []int {
-        fmt.Println(coords, coords[0] - index)
         coords[1] = coords[1] - index
         coords[0] = coords[0] - index
         return coords
       },
       boundaryFn: func(coords []int) bool {
-        fmt.Println(coords, coords[0] - 3)
         return coords[1] - 3 >= 0 && coords[0] - 3 >= 0
       },
     },
     "southeast": indexAndBoundary{
       direction: "southeast",
       indexFn: func(coords []int, index int) []int {
-        fmt.Println(coords, coords[0] - index)
         coords[1] = coords[1] + index
         coords[0] = coords[0] + index
         return coords
       },
       boundaryFn: func(coords []int) bool {
-        fmt.Println(coords, coords[0] - 3)
         return coords[1] + 3 <= yMax && coords[0] + 3 <= xMax
       },
     },
     "southwest": indexAndBoundary{
       direction: "southeast",
       indexFn: func(coords []int, index int) []int {
-        fmt.Println(coords, coords[0] - index)
         coords[1] = coords[1] + index
         coords[0] = coords[0] - index
         return coords
       },
       boundaryFn: func(coords []int) bool {
-        fmt.Println(coords, coords[0] - 3)
         return coords[1] + 3 <= yMax && coords[0] - 3 >= 0
       },
     },
