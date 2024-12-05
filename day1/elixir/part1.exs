@@ -1,0 +1,8 @@
+File.stream!("../input.txt", :line)
+|> Stream.map(&String.trim/1)
+|> Stream.map(&String.split/1)
+|> Enum.reduce([[], []], fn [left | [right | []]], [lacc, racc] -> [[left | lacc], [right | racc]] end)
+|> Enum.map(&Enum.sort/1)
+|> List.zip()
+|> Enum.reduce(0, fn {left, right}, acc -> acc + abs(String.to_integer(left) - String.to_integer(right)) end)
+|> (fn answer -> IO.puts("The answer is: #{answer}") end).()
